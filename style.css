@@ -1,0 +1,103 @@
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.envelope {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #efc4c4;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.6s ease-in-out;
+}
+
+.envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 100px solid #f9d8d8;
+    border-right: 150px solid transparent;
+    border-left: 150px solid transparent;
+    z-index: 2;
+    transform-origin: top;
+    transition: transform 0.6s ease-in-out;
+}
+
+.envelope.open::before {
+    transform: rotateX(180deg);
+}
+
+.letter {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    width: 270px;
+    height: 170px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    transition: transform 0.6s ease-in-out 0.4s;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.envelope.open .letter {
+    transform: translateY(-160px);
+}
+
+.text {
+    padding: 20px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: #ff5252;
+    transform-origin: 50% 50%;
+    transition: transform 0.6s ease-in-out;
+    z-index: 3;
+}
+
+.heart::before,
+.heart::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff5252;
+    border-radius: 50%;
+    top: -50%;
+}
+
+.heart::before {
+    left: -50%;
+}
+
+.heart::after {
+    right: -50%;
+}
